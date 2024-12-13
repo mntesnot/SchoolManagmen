@@ -1,0 +1,30 @@
+﻿
+@model List<Student>
+@{
+    ViewData["Title"] = "Home Page";
+
+   
+}
+
+
+
+<div class="text-center">
+   <table class="table table-bordered table-striped">
+       <tr class="bg-info">
+           <th>@Html.DisplayNameFor(model=>Model[0].Id)</th>
+           <th>@Html.DisplayNameFor(Model=>Model[0].Name)</th>
+           <th>Age</th>
+           <th>Phone No</th>
+       </tr>
+       @foreach(var s in Model){
+           <tr s>
+               <td>@Html.DisplayFor(model=>s.Id)</td>
+               <td>@s.Name</td>
+               <td>@s.</td>
+               <td>@s.PhoneNo</td>
+           </tr>
+       }
+   </table>
+</div>
+
+

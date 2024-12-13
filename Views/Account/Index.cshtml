@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Account>
+@{
+	int i = 1;
+}
+
+
+@if(Model !=null && Model.Any()){
+	<table class="table">
+		<thead>
+			<tr>
+				<td>#</td>
+				<td>Fullname</td>
+				<td>Username</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			
+				@foreach(var u in Model){
+				<tr>
+					<td>@i</td>
+					<td>@u.Fullname</td>
+					<td>@u.UserName</td>
+					<td></td>
+				</tr>
+				  
+				@(i++)
+					
+				}			
+		</tbody>
+	</table>
+}

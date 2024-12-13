@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Student>
+@{
+	Layout = "_Layout";
+}
+<a class="btn btn-success"
+	asp-action="Create">Add New Student</a>
+<form asp-action="Index" method="get">
+	<input name="name" placeholder="Search by Name"
+		   class="form-control" />
+	<button type="submit">Search</button>
+</form>
+
+<h3>List Of Students</h3>
+<table class="table">
+	<thead>
+		<tr>
+			<th>@Html.DisplayNameFor(model=>model.Id)</th>
+			<th>@Html.DisplayNameFor(model=>model.Name)</th>
+			<th>@Html.DisplayNameFor(model=>model.Age)</th>
+			<th>@Html.DisplayNameFor(model => model.PhoneNo)</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	   @if(Model != null && Model.Any()){
+			@foreach (var s in Model)
+			{
+				<tr>
+					<td>@s.Id</td>
+					<td>@s.Name</td>
+					<td>@s.Age</td>
+					<td>@s.PhoneNo</td>
+					<td><a asp-action="Detail" asp-route-id="@s.Id">Detail</a></td>
+				    <td><a asp-action="Update" asp-route-id="@s.Id">Edit</a></td>
+				    <td><a asp-action="Delete" asp-route-id="@s.Id">Delete</a></td>
+				</tr>
+			}
+		}
+		else
+		{
+			<tr>
+				<td>No Data !</td>
+			</tr>
+		}
+		
+	</tbody>
+</table>

@@ -1,0 +1,84 @@
+﻿@model GradeReport
+@{
+}
+
+
+<div class="card">
+	<div class="card-header">
+		<form asp-action="StudentGradeReport" method="get">
+			<div class="row">
+				<div class="col-8">
+					<select name="id" class="form-control" asp-items="ViewBag.StudentList">
+						<option>Select Student</option>
+					</select>
+				</div>
+				<div class="col-4">
+					<button type="submit" class="btn btn-success"> Open</button>
+				</div>
+			</div>
+			
+		</form>
+	</div>
+	<div class="card-body">
+		@if(Model.Student !=null){
+			
+			<dl class="row">
+				<dt class="col-sm-2">
+					@Html.DisplayNameFor(model => model.Student.Name)
+				</dt>
+				<dd class="col-sm-10">
+					@Html.DisplayFor(model => model.Student.Name)
+				</dd>
+				<dt class="col-sm-2">
+					@Html.DisplayNameFor(model => model.Student.Age)
+				</dt>
+				<dd class="col-sm-10">
+					@Html.DisplayFor(model => model.Student.Age)
+				</dd>
+				<dt class="col-sm-2">
+					@Html.DisplayNameFor(model => model.Student.PhoneNo)
+				</dt>
+				<dd class="col-sm-10">
+					@Html.DisplayFor(model => model.Student.PhoneNo)
+				</dd>				
+			</dl>
+		}
+	</div>
+	<div class="card-footer">
+		@if(Model.Registors.Any()){
+			<table class="table">
+				<thead>
+					<tr>					
+						<th>
+							Course
+						</th>
+						<th>
+							CHR
+						</th>
+						<th>
+							Grade
+						</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model.Registors)
+					{
+						<tr>
+							
+							<td>
+								@Html.DisplayFor(modelItem => item.Course.Name)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Course.CHR)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Grade)
+							</td>							
+						</tr>
+					}
+				</tbody>
+			</table>
+		}
+	</div>
+</div>
